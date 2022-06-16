@@ -25,6 +25,7 @@ def TrainModel (params):
     plt.xlabel('Age')
     plt.ylabel('Income ($)')
     plt.legend()
+
     scaler = MinMaxScaler()
 
     scaler.fit(df[['Income($)']])
@@ -32,6 +33,8 @@ def TrainModel (params):
 
     scaler.fit(df[['Age']])
     df['Age'] = scaler.transform(df[['Age']])
+    
+    
     df.head()
     plt.scatter(df.Age,df['Income($)'])
     km = KMeans(n_clusters=3)
@@ -58,3 +61,4 @@ def TrainModel (params):
     plt.xlabel('K')
     plt.ylabel('Sum of squared error')
     plt.plot(k_rng,sse)
+TrainModel("params")
